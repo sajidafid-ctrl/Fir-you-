@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffe4ef">
+  <title>Sorry, Najma ❤️</title>
+  <style>
+    :root { --pink:#ff6fae; --deep:#d63384; --soft:#fff4f8; --text:#5b2440; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100svh; display: grid; place-items: center;
+      padding: 22px; overflow-x: hidden; font-family: system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top, #fff 0, #ffe8f1 42%, #ffd6e7 100%);
+    }
+    .card {
+      width: min(100%, 430px); position: relative; text-align: center;
+      background: rgba(255,255,255,.86); border: 1px solid #fff;
+      border-radius: 28px; padding: 30px 23px 26px;
+      box-shadow: 0 18px 55px rgba(214,51,132,.16);
+      animation: pop .7s ease both;
+    }
+    .tag { display:inline-block; padding:7px 13px; border-radius:99px; background:#ffe2ef; color:var(--deep); font-size:.82rem; font-weight:700; }
+    .bear { font-size: 76px; margin: 14px 0 2px; animation: bob 2.3s ease-in-out infinite; }
+    h1 { font-size: clamp(2rem, 9vw, 2.65rem); line-height:1.1; margin: 8px 0 12px; color:var(--deep); }
+    p { font-size: 1.02rem; line-height:1.65; margin: 10px 0; }
+    .message { font-size:1.18rem; font-weight:800; color:#c22570; margin:18px 0; }
+    button {
+      border:0; border-radius:999px; padding:14px 20px; margin-top:12px;
+      width:100%; font:inherit; font-weight:800; color:white; cursor:pointer;
+      background:linear-gradient(135deg,#ff75b2,#e64991);
+      box-shadow:0 8px 20px rgba(230,73,145,.24);
+      transition:transform .18s ease;
+    }
+    button:active { transform:scale(.98); }
+    .reply { display:none; margin-top:16px; padding:13px; background:#fff0f6; border-radius:16px; color:#a51d60; font-weight:700; }
+    .tiny { font-size:.83rem; opacity:.78; margin-top:18px; }
+    .heart { position:fixed; bottom:-40px; pointer-events:none; opacity:0; animation: floatUp 5.5s linear forwards; }
+    @keyframes pop { from {opacity:0; transform:translateY(14px) scale(.98)} to {opacity:1;transform:translateY(0) scale(1)} }
+    @keyframes bob { 0%,100% {transform:translateY(0) rotate(-2deg)} 50% {transform:translateY(-7px) rotate(2deg)} }
+    @keyframes floatUp { 0% {transform:translateY(0) rotate(0);opacity:0} 10% {opacity:.8} 100% {transform:translateY(-115vh) rotate(25deg);opacity:0} }
+    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation:none !important; transition:none !important; } }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <span class="tag">A little message for you 💌</span>
+    <div class="bear" aria-hidden="true">🧸💗</div>
+    <h1>Najma, I'm Sorry 🥺</h1>
+    <p>I don't want to upset you. If my words or actions hurt you, I'm truly sorry.</p>
+    <div class="message">Please mujhe maaf kar do 🥺❤️</div>
+    <p>Tumhari feelings mere liye important hain. Jab tum ready ho, main tumhari baat dhyaan se sunna chahta hoon. 💗</p>
+    <button id="heartBtn" type="button">Send you a little heart 💖</button>
+    <div class="reply" id="reply" role="status">Ek warm sa virtual hug tumhare liye 🫂💞</div>
+    <p class="tiny">No pressure to reply right away. Take your time. 🌷</p>
+  </main>
+  <script>
+    const btn = document.getElementById('heartBtn');
+    const reply = document.getElementById('reply');
+    btn.addEventListener('click', () => {
+      reply.style.display = 'block';
+      for (let i = 0; i < 14; i++) {
+        const heart = document.createElement('span');
+        heart.className = 'heart';
+        heart.textContent = ['💗','💖','💕','❤️','🌸'][Math.floor(Math.random()*5)];
+        heart.style.left = (Math.random()*96) + 'vw';
+        heart.style.fontSize = (18 + Math.random()*18) + 'px';
+        heart.style.animationDuration = (3.5 + Math.random()*3) + 's';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 7000);
+      }
+    });
+  </script>
+</body>
+</html>
